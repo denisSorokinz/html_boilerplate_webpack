@@ -3,6 +3,7 @@ const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPugPlugin = require("html-webpack-pug-plugin");
+const Autoprefixer = require("autoprefixer");
 
 const PATHS = {
     dist: path.join(__dirname, "dist"),
@@ -52,12 +53,21 @@ module.exports = {
             },
             {
                 test: /\.s[ac]ss?$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader",
+                ],
                 exclude: ["/node_modules/"],
             },
             {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                ],
                 exclude: ["/node_modules/"],
             },
             {
@@ -69,7 +79,7 @@ module.exports = {
             },
         ],
     },
-    plugins: [new MiniCssExtractPlugin()]
+    plugins: [new MiniCssExtractPlugin(), Autoprefixer]
         .concat(HtmlWebpackPluginForAll(PATHS.views))
         .concat([new HtmlWebpackPugPlugin()]),
 };
