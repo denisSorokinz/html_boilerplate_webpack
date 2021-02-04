@@ -1,0 +1,12 @@
+@mixin backgroundImage($src, $backgroundSize: contain, $backgroundPosition: center, $backgroundRepeat: no-repeat)
+    background-image: url($src)
+    background-size: $backgroundSize
+    background-position: $backgroundPosition
+    background-repeat: $backgroundRepeat
+
+@mixin makeMontserratFont($fontSize: 1rem, $fontWeight: 500, $color: $white, $lineHeight: 2.5rem)
+    font-family: "Montserrat", sans-serif
+    font-size: $fontSize
+    font-weight: $fontWeight
+    color: $color
+    line-height: $lineHeight

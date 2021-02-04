@@ -1,4 +1,103 @@
-@import "~bootstrap/dist/css/bootstrap.min.css"
 @import "~normalize-css/normalize.css"
-@import "_variables.sass"
+@import "_variables.scss"
+@import "~bootstrap/scss/bootstrap.scss"
+@import "reset.sass"
 @import "fonts.sass"
+@import "mediaqueries.sass"
+@import "mixins.sass"
+
+.container--custom
+    width: 85.4%
+    margin: auto
+
+body
+    // header.header
+    //     padding: 0.5rem 0 0.5625rem
+    //     .container--custom
+    //         & > .row
+    //             justify-content: space-between
+    section.hero
+        padding-top: 3.8125rem
+        .hero__left
+            +backgroundImage($src: "../images/hero.jpg", $backgroundSize: cover)
+            border-bottom-left-radius: 2.5rem
+        .hero__right
+            padding: 4.125rem 1rem 4.375rem
+            +backgroundImage($src: "../images/swatch.jpg", $backgroundSize: contain, $backgroundRepeat: repeat)
+            border-top-right-radius: 2.5rem
+            & > *
+                color: $white
+                margin: auto
+                text-align: center
+            h2.hero__heading,
+            h3.hero__subheading
+                +makeMontserratFont($fontSize: 1.875rem)
+            h2.hero__heading
+                margin-bottom: 3.1875rem
+                max-width: 26rem
+            h3.hero__subheading
+                font-weight: 300
+                margin-bottom: 3.1875rem
+                max-width: 24rem
+            span
+                display: block
+                &.hero__span
+                    +makeMontserratFont($fontSize: 1.4375rem, $fontWeight: 300)
+                    max-width: 22.1875rem
+                    margin-bottom: 1.1875rem
+                &.hero__subtext
+                    +makeMontserratFont($fontSize: 1.125rem)
+                    max-width: 22.8125rem
+
+    section.promo
+        padding: 5.125rem 0
+        h3.promo__subheading,
+        h2.promo__heading
+            +makeMontserratFont($color: $green)
+            text-align: center
+        h3.promo__subheading
+            &--uppercase
+                text-transform: uppercase
+            &--small
+                font-size: 1.150rem
+                margin-bottom: 2.8125rem
+            font-size: 1.875rem
+            font-weight: 400
+            margin-bottom: 2rem
+        h2.promo__heading
+            &--small
+                font-size: 2.4rem
+                margin-bottom: 1.25rem
+            font-size: 3.125rem
+            line-height: 2.8125rem
+            text-transform: uppercase
+            font-weight: 700
+            margin-bottom: 3rem
+        .promo__left
+            p.promo__paragraph
+                +makeMontserratFont($fontSize: 1.2rem, $fontWeight: 400, $color: $black, $lineHeight: 1.875rem)
+                &:not(:last-of-type)
+                    margin-bottom: 1.85rem
+                span.promo__span
+                    color: $green
+        .promo__right
+            padding-left: 2.25rem
+            iframe.promo__iframe
+                display: block
+                max-width: 100%
+                margin-left: auto
+
+    section.sponsors
+        ul.sponsors__slider
+            @include backgroundImage($src: "../images/swatch.jpg", $backgroundSize: contain, $backgroundRepeat: repeat)
+            border-bottom-left-radius: 2.5rem
+            border-top-right-radius: 2.5rem
+            padding: 5rem
+            height: 100%
+            display: flex
+            justify-content: space-between
+            align-items: center
+            li.slider__item
+                .item__image
+                    object-fit: contain
+                    max-height: 4.0625rem
