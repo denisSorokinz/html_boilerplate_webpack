@@ -40,7 +40,6 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0-beta1",
-    "normalize-css": "^2.3.1"
+    "bootstrap": "^5.0.0-beta1"
   }
 }
