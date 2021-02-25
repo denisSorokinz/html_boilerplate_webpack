@@ -1,8 +1,10 @@
+const webpack = require("webpack");
 const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPugPlugin = require("html-webpack-pug-plugin");
+const Autoprefixer = require("autoprefixer");
 
 const PATHS = {
     dist: path.join(__dirname, "dist"),
@@ -55,6 +57,14 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [Autoprefixer()],
+                            },
+                        },
+                    },
                     "sass-loader",
                 ],
                 exclude: ["/node_modules/"],
@@ -64,6 +74,14 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [Autoprefixer()],
+                            },
+                        },
+                    },
                 ],
                 exclude: ["/node_modules/"],
             },
@@ -76,7 +94,12 @@ module.exports = {
             },
         ],
     },
-    plugins: [new MiniCssExtractPlugin(),]
+    plugins: [
+        new MiniCssExtractPlugin(),
+        new webpack.LoaderOptionsPlugin({
+            options: { postcss: [Autoprefixer()] },
+        }),
+    ]
         .concat(HtmlWebpackPluginForAll(PATHS.views))
         .concat([new HtmlWebpackPugPlugin()]),
 };
