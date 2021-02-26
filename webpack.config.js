@@ -94,6 +94,12 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        extensions: [".tsx", ".ts", ".js"],
+        alias: {
+            Assets: path.join(__dirname, "src", "assets"),
+        },
+    },
     plugins: [
         new MiniCssExtractPlugin(),
         new webpack.LoaderOptionsPlugin({

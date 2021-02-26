@@ -6,7 +6,12 @@
         "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
         "outDir": "./dist/" /* Redirect output structure to the directory. */,
         "rootDir": "./" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
-
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "paths": {
+            "Assets": ["src/assets"]
+        },
+        "downlevelIteration": true,
         /* Strict Type-Checking Options */
         "strict": true /* Enable all strict type-checking options. */,
         "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
